@@ -41,11 +41,14 @@ export default function UserContextProvider({
   // Sign up function
   async function signup(name: string, email: string, password: string) {
     try {
-      const response = await axios.post("http://localhost:4000/signup", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASEURL}/signup`,
+        {
+          name,
+          email,
+          password,
+        }
+      );
       console.log("Register data => ", response.data);
       sessionStorage.setItem("user", JSON.stringify(response.data));
       setUser(response.data);
@@ -61,10 +64,13 @@ export default function UserContextProvider({
   // Login Form function
   async function login(email: string, password: string) {
     try {
-      const response = await axios.post("http://localhost:4000/login", {
-        email,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASEURL}/login`,
+        {
+          email,
+          password,
+        }
+      );
       toast.success(response.data.message);
       sessionStorage.setItem("user", JSON.stringify(response.data));
       setUser(response.data);
