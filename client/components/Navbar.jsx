@@ -1,5 +1,4 @@
-export default function Navbar({ logout, username, email }) {
-  console.log(email);
+export default function Navbar({ logout }) {
   return (
     <div className="navbar bg-base-200 shadow-md px-4">
       <div className="navbar-start">
@@ -76,7 +75,7 @@ export default function Navbar({ logout, username, email }) {
         </ul>
       </div>
       <div className="navbar-end">
-        <div className="dropdown dropdown-end" role="button" tabIndex={0}>
+        {/* <div className="dropdown dropdown-end" role="button" tabIndex={0}>
           <div className="avatar placeholder">
             <div className="bg-neutral text-neutral-content w-12 rounded-full">
               <span>{username?.slice(0, 1).toUpperCase()}</span>
@@ -99,7 +98,15 @@ export default function Navbar({ logout, username, email }) {
               <a>{email}</a>
             </li>
           </ul>
-        </div>
+        </div> */}
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            logout();
+          }}
+        >
+          Logout
+        </button>
       </div>
     </div>
   );

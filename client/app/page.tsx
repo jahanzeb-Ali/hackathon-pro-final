@@ -22,17 +22,14 @@ export default function Home() {
   if (!user) return <span className="loading loading-dots loading-lg"></span>;
 
   return (
-    <>
-      <Navbar
-        logout={logout}
-        username={user?.data?.name}
-        email={user?.data?.email}
-      />
-      <div className="flex justify-center items-center h-screen">
-        <h1 className="text-5xl font-bold">Wellcome</h1>
+    <div className="h-screen">
+      <Navbar logout={logout} />
+      <div className="flex justify-center items-center h-[88vh] flex-col">
+        <h1 className="text-8xl font-bold block">Jahanzeb</h1>
+        <p className="text-2xl">WMA - 196798</p>
         <Modal discription={"pakisatn tujhe sallam "} />
       </div>
-    </>
+    </div>
   );
 }
 // export default withAuth(Home)
