@@ -16,9 +16,15 @@ interface User {
   token: string;
 }
 
+interface ApiResponse {
+  success: boolean;
+  message: string;
+  data: User;
+}
+
 interface AppContextType {
-  user: User | null;
-  setUser: React.Dispatch<React.SetStateAction<User | null>>;
+  user: ApiResponse | null;
+  setUser: React.Dispatch<React.SetStateAction<ApiResponse | null>>;
   signup: (name: string, email: string, password: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
 }
@@ -30,8 +36,8 @@ export default function UserContextProvider({
 }: {
   children: ReactNode;
 }) {
-  const [user, setUser] = useState<User | null>(null);
-  console.log(`User ======>  ${user}`);
+  const [user, setUser] = useState<ApiResponse | null>(null);
+  console.log(`ApiResponse ======>  ${JSON.stringify(user)}`);
   useEffect(() => {
     const data = sessionStorage.getItem("user");
     if (data) {
@@ -71,6 +77,7 @@ export default function UserContextProvider({
           password,
         }
       );
+      console.log("Register data => ", response.data);
       toast.success(response.data.message);
       sessionStorage.setItem("user", JSON.stringify(response.data));
       setUser(response.data);
