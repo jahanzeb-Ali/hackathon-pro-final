@@ -25,7 +25,7 @@ export default function Form() {
 
   return (
     <div className="flex justify-center items-center h-screen bg-slate-400">
-      <div className=" scale-90 p-3 rounded-lg shadow-lg shadow-grey-400 w-[40vw] bg-white ">
+      <div className=" scale-90 py-6 rounded-lg shadow-lg shadow-grey-400 w-[40vw] bg-white ">
         <h2 className="text-3xl font-bold text-center m-2">Register </h2>
         <p className="text-center mb-3">
           Please fill in this form to create an account.
